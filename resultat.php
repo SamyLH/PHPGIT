@@ -55,6 +55,9 @@ $pdo = Database::getConnexion();
 $stmt = $pdo->prepare("SELECT * FROM questionnaires WHERE code = ?");
 $stmt->execute([$theme]);
 $themeInfo = $stmt->fetch();
+require_once 'classes/Badge.php';
+$badgeSystem = new Badge();
+$badgeSystem->verifierBadges($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
